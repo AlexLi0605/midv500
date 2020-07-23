@@ -2,9 +2,9 @@ import unittest
 
 
 class ConverterTests(unittest.TestCase):
-
     def test_calculate_intersect_area(self):
         from midv500.utils import calculate_intersect_area
+
         # check if intersection area is calculated correctly
 
         # case 1
@@ -21,6 +21,7 @@ class ConverterTests(unittest.TestCase):
 
     def test_get_bbox_inside_image(self):
         from midv500.utils import get_bbox_inside_image
+
         # check if bbox inside image is calculated correctly
 
         # form bbox regions
@@ -37,24 +38,31 @@ class ConverterTests(unittest.TestCase):
 
     def test_list_annotation_paths_recursively(self):
         from midv500.utils import list_annotation_paths_recursively
+
         # check if annotations paths can be read
 
         directory = "tests/test_data/data/"
         # read annotations paths
-        annotation_paths = list_annotation_paths_recursively(directory, ignore_background_only_ones=True)
+        annotation_paths = list_annotation_paths_recursively(
+            directory, ignore_background_only_ones=True
+        )
         self.assertEqual(len(annotation_paths), 90)
 
     def test_download(self):
         from midv500.utils import download
+
         # check if annotations paths can be read
 
-        url = "https://github.com/fcakyon/midv500/raw/master/tests/test_data/CA43_01.zip"
+        url = (
+            "https://github.com/fcakyon/midv500/raw/master/tests/test_data/CA43_01.zip"
+        )
         save_dir = "tests/test_data/"
         # read annotations paths
         download(url, save_dir)
 
     def test_unzip(self):
         from midv500.utils import unzip
+
         # check if annotations paths can be read
 
         file_path = "tests/test_data/CA43_01.zip"
@@ -63,5 +71,5 @@ class ConverterTests(unittest.TestCase):
         unzip(file_path, dest_dir)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
